@@ -1,18 +1,21 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        std::vector<int> v;
-        for (int i = 0; i < nums.size()-1; ++i)
-        {
-            for (int j = i+1; j < nums.size(); ++j)
-            {
-                if (nums[i]+nums[j]==target){
-                    v.push_back(i);
-                    v.push_back(j);
-                    break;
-                }
-            } 
+        map<int,int> m;
+        // set<int> s;
+        vector<int> ans;
+        for(int i=0;i<nums.size();i++){
+            m[nums[i]]=i;
+            // s.insert(nums[i]);
         }
-        return v;
+        for(int i=0;i<nums.size();i++){
+            auto x=m.find(target-nums[i]);
+            if(x!=m.end() && m[target-nums[i]]!=i){
+                ans.push_back(i);
+                ans.push_back(m[target-nums[i]]);
+                break;
+            }
+        }
+        return ans;
     }
 };
