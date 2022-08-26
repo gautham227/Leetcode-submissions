@@ -3,7 +3,6 @@ public:
     int dp[101][101][201];
     int n,m;
     int recur(int x, int y, int cnt, vector<vector<char> >& grid){
-        // cout<<x<<" "<<y<<" "<<cnt<<endl;
         if(x>=n || y>=m || x<0 || y<0)return 0;
         if(cnt<0)return 0;
         if(dp[x][y][cnt]!=-1)return dp[x][y][cnt];
