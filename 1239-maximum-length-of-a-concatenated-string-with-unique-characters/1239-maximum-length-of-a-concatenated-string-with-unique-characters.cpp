@@ -27,11 +27,6 @@ public:
             }
             if(flag)v.push_back(cur);
         }
-        // for(int i=0;i<v.size();i++){
-        //     cout<<v[i]<<" ";
-        //     // cout<<__builtin_popcount(v[i])<<endl;
-        // }
-        cout<<endl;
         return recur(0,v,0);
     }
 };
