@@ -24,7 +24,7 @@ public:
 
         while(r-l>1){
             int mid=l+(r-l)/2;
-            cout<<mid<<endl;
+            // cout<<mid<<endl;
             if(check(mid,price,k))l=mid;
             else r=mid-1;
         }
