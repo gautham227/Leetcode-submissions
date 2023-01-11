@@ -7,17 +7,13 @@ public:
         for(auto child: adj[node]){
             if(child==par)continue;
             int val=dfs(child,node,adj,hasapple);
-            // ans+=dfs(child,node,adj,hasapple);
-            // if(val>0)cnt++;
             ans+=val;
         }
         
         if(ans>0)ans+=1;
         else{
             if(hasapple[node])ans=1;
-            // else return 0;
         }
-        // cout<<node<<" "<<ans<<endl;
         return ans;
     }
     
@@ -30,6 +26,6 @@ public:
         }
         int ans1=dfs(0,-1,adj,hasApple);
         if(ans1==0)return 0;
-        return 2*dfs(0,-1,adj,hasApple)-2;
+        return 2*ans1-2;
     }
 };
