@@ -2,12 +2,6 @@
 
 class Solution {
 public:
-    // ll min(ll a, ll b){
-    //     if(a>b)return b;
-    //     return a;
-    // }
-    
-    // ll n;
     ll recur(ll ind, ll k, vector<ll >&dp, vector<int>& nums, int n){
         if(ind<0)return 0;
         if(dp[ind]!=-1)return dp[ind];
@@ -27,8 +21,6 @@ public:
         
         int n=nums.size();
         vector<ll >dp(n, -1);
-        // recur(n-1,k,dp,nums);
-        
         ll ans=1e18;
         return recur(n-1,k,dp,nums,n);
     }
