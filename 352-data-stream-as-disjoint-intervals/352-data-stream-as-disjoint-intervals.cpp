@@ -1,6 +1,7 @@
 class SummaryRanges {
 public:
     vector<int> v;
+    vector<vector<int> >ans;
     SummaryRanges() {
         for(int i=0;i<=1e4;i++){
             v.push_back(0);
@@ -12,7 +13,7 @@ public:
     }
     
     vector<vector<int>> getIntervals() {
-        vector<vector<int> >ans;
+        ans.clear();
         int st=-1, en=-1;
         for(int i=0;i<=1e4;i++){
             if(v[i]==1){
