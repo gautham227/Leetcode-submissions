@@ -4,7 +4,6 @@ public:
         int n=str1.size();
         int m=str2.size();
         int sz=min(n,m);
-        string s1;
         string ans="";
         string cur="";
         for(int i=0;i<sz;i++){
