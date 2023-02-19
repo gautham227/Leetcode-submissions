@@ -21,13 +21,9 @@ public:
         vector<vector<int> >ans;
         bool dir=0;
         while(!q.empty()){
-            // if(cnt>1)break;
             TreeNode* cur=q.front();
             if(cur==NULL){
-                // cout<<"NULL"<<endl;
                 cnt++;
-                // for(auto ele: v)cout<<ele<<" ";
-                // cout<<endl;
                 if(v.size()==0)break;
                 else{
                     if(dir){
@@ -40,12 +36,10 @@ public:
                 q.push(NULL);
             }
             else{
-                // cout<<cur->val<<endl;
                 v.push_back(cur->val);
                 int cnt1=0;
                 if(cur->left!=NULL){q.push((cur->left));cnt1++;}
                 if(cur->right!=NULL){q.push((cur->right));cnt1++;}
-                // cout<<cnt1<<" counter"<<endl;
             }
             q.pop();
         }
