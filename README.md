@@ -1,5 +1,9 @@
 # Leetcode-Solutions
-This repository contains solutions to some of the problems on LeetCode. Most of the solutions are in C++
+This repository contains solutions to some of the problems on 
+[Leetcode](https://leetcode.com) .
+Most of the solutions are in C++
+
+My Leetcode Profile -> [gautham227](https://leetcode.com/gautham227)
 
 ## Contents
 
