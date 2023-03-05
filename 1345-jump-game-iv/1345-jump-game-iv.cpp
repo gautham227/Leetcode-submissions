@@ -34,16 +34,11 @@ public:
         q.push(v);
         vis[v]=1;
         dist[v]=0;
-        // cout<<arr.size()<<endl;
-        // unordered_set<int> us;
         while(!q.empty()){
             int cur=q.front();
-            // cout<<cur<<endl;
             q.pop();
-            // if(us.find(arr[cur])!=us.end())continue;
             for(int child : mp[arr[cur]]){
                 if(vis[child]==1){
-                    // cout<<"@"<<endl;
                     continue;
                 }
                 q.push(child);
@@ -51,7 +46,6 @@ public:
                 dist[child]=dist[cur]+1;
             }
             if(cur!=0){
-                // cout<<"&"<<endl;
                 ll child=cur-1;
                 if(vis[child]==0){
                     q.push(child);
@@ -59,9 +53,7 @@ public:
                     dist[child]=dist[cur]+1;
                 }
             }
-            // cout<<arr.size()<<endl;
             if(cur!=arr.size()-1){
-                // cout<<"here "<<cur<<endl;
                 ll child=cur+1;
                 if(vis[child]==0){
                     q.push(child);
@@ -69,7 +61,6 @@ public:
                     dist[child]=dist[cur]+1;
                 }
             }
-            // us.insert(arr[cur]);
             mp[arr[cur]]={};
         }
     }
@@ -80,18 +71,13 @@ public:
         for(int i=0;i<50010;i++){
             dist.push_back(1ll*10000000000000000);
         }
-
-        // vector<vector<int> >adj(n);
         unordered_map<int, vector<int> > mp;
         for (int i = 0; i < arr.size(); ++i) {
             if (i > 0 && i+1 < arr.size() && arr[i] == arr[i+1] && arr[i] == arr[i-1]) {
-			    // don't add the number if its adjacent numbers are all the same.
                 continue;
             }
             mp[arr[i]].push_back(i);
         }
-        // cout<<endl;
-        
         bfs(0,mp,dist,arr);
         return dist[n-1];
     }
