@@ -18,7 +18,6 @@ public:
         if(root==NULL)return;
         if(root->left==NULL && root->right==NULL){
             if(h>h1){
-                // cout<<"here "<<root->val<<endl;
                 ans=false;
             }
             h1=min(h,h1);
@@ -40,7 +39,6 @@ public:
         cout<<sz<<endl;
         int cnt=0;
         for(auto ele: mp){
-            // cout<<ele.first<<" "<<ele.second<<endl;
             if(cnt!=sz-1 && last!=ele.second)return false;
             last*=2;
             cnt++;
