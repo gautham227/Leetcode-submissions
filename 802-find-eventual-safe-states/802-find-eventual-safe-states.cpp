@@ -1,16 +1,19 @@
 class Solution {
 public:
     
-    // n is the no of elements and adj is the adjacency list
-    vector<int> toposort(int n, vector<vector<int> >& adj) {
+    // n is the no of elements and graph is the adjacency list
+    vector<int> toposort(int n, vector<vector<int>>& graph) {
+        vector<int> adj[n];
         vector<int> indegree(n,0);
-        for(int i=0;i<adj.size();i++){
-            for(auto node: adj[i]){
-                indegree[node]++;
+        for(int i=0;i<graph.size();i++){
+            for(auto ele: graph[i]){
+                adj[ele].push_back(i);
+                indegree[i]++;   
             }
         }
         
         queue<int> q;
+        
         for(int i=0;i<n;i++){
             if(indegree[i]==0){
                 q.push(i);
@@ -37,17 +40,7 @@ public:
     
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
         
-        int n=graph.size();
-        vector<vector<int> >adj(n);
-        
-        for(int i=0;i<n;i++){
-            for(auto node: graph[i]){
-                adj[node].push_back(i);
-            }
-        }
-        
-        
-        vector<int> topsorted = toposort(graph.size(), adj);
+        vector<int> topsorted = toposort(graph.size(), graph);
         
         set<int> ans;
         for(int ele: topsorted){
