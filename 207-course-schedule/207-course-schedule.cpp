@@ -1,35 +1,52 @@
 class Solution {
 public:
-    int vis[2001];
-    vector<int> adj[2001];
     
-    bool cycle(int node)
-    {
-        if(vis[node]==2)return true;
-        vis[node]=2;
-        for(int child:adj[node])
-        {
-            if(vis[child]==1)continue;
-            if(cycle(child)==true) return true;
-        }
-        vis[node]=1;
-        return false;
-    }
-    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        int f=0;
-        for(int i=0;i<prerequisites.size();i++){
-            adj[prerequisites[i][0]].push_back(prerequisites[i][1]);
-        }
-        for(int i=0;i<numCourses;i++){
-            if(vis[i]!=1){
-                bool x=cycle(i);
-                if(x){
-                    f=1;
-                    break;
-                }   
+    vector<int> toposort(vector<vector<int> >adj){
+        int n=adj.size();
+        vector<int> indegree(n,0);
+        
+        // finding the indegree of all the vertices
+        
+        for(int i=0;i<n;i++){
+            for(auto ele: adj[i]){
+                indegree[ele]++;
             }
         }
-        if(f)return false;
-        return true;
+        
+        queue<int> q;
+        
+        for(int i=0;i<n;i++){
+            if(indegree[i]==0)q.push(i);
+        }
+        
+        vector<int> topsort;
+        
+        // traversing the queue and finding the toposort
+        
+        while(!q.empty()){
+            int top=q.front();
+            q.pop();
+            for(auto ele: adj[top]){
+                indegree[ele]--;
+                if(indegree[ele]==0)q.push(ele);
+            }
+            topsort.push_back(top);
+        }
+        
+        return topsort;
+    }
+    
+    bool canFinish(int numCourses, vector<vector<int>>& prereq) {
+        vector<vector<int> >adj(numCourses);
+        
+        // creating the adjacency list
+        for(int i=0;i<prereq.size();i++){
+            adj[prereq[i][1]].push_back(prereq[i][0]);
+        }
+        
+        vector<int> toposortedarray=toposort(adj);
+        
+        return (toposortedarray.size()==numCourses);
+        
     }
 };
