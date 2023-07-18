@@ -1,8 +1,8 @@
 class LRUCache {
 public:
     int cap;
-    map<int,int> mp;
-    map<int,int> lastused;
+    unordered_map<int,int> mp;
+    unordered_map<int,int> lastused;
     set<vector<int> > s;
     int counter;
     LRUCache(int capacity) {
