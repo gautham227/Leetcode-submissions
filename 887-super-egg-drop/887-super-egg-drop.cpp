@@ -2,14 +2,13 @@ class Solution {
 public:
     
     int recur(int floors, int eggs, vector<vector<int > >& dp){
-        // cout<<floors<<" "<<eggs<<endl;
         if(eggs==1)return floors;
         if(floors<=1)return floors;
         if(dp[floors][eggs]!=-1)return dp[floors][eggs];
         int l=1, r=floors;
         
-        while(l+1<r){
-            int mid=(l+r)/2;
+        while(r-l>1){
+            int mid=l+(r-l)/2;
             int val1=recur(mid-1,eggs-1, dp);
             int val2=recur(floors-mid, eggs, dp);
             if(val1<val2){
