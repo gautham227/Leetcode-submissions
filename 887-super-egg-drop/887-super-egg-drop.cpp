@@ -18,7 +18,8 @@ public:
                 r=mid;
             }
             else{
-                l=r=mid;
+                l=mid;
+                r=mid;
             }
         }
         
