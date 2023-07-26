@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    bool check(vector<int> & dist, double hour, int cur){
+    bool check(vector<int> & dist, double &hour, int &cur){
         double time=0;
         for(int i=0;i<dist.size()-1;i++){
             time+=(int)(dist[i]+cur-1)/cur;
