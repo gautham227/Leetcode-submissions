@@ -1,10 +1,5 @@
 class Solution {
 public:
-    
-    static bool cmp(int v1, int v2){
-        return v1>v2;
-    }
-    
     bool check(long long val, vector<int> & b, long long comp){
         long long req=comp*val;
         
@@ -20,8 +15,6 @@ public:
         
     long long maxRunTime(int n, vector<int>& batteries) {
         long long su=0;
-        
-        sort(batteries.begin(), batteries.end(), cmp);
         
         for(auto ele: batteries)su+=ele;
         
