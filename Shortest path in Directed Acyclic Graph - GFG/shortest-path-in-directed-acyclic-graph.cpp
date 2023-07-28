@@ -18,16 +18,8 @@ class Solution {
          
          st.push(ind);
      }
-  
-     vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
-        // code here
-        vector<vector<pair<int,int> > >adj(N);
-        
-        for(int i=0;i<edges.size();i++){
-            adj[edges[i][0]].push_back({edges[i][1], edges[i][2]});
-        }
-        
-        
+     
+     vector<int> toposort(vector<vector<pair<int,int> > >& adj, int N){
         stack<int> st;
         vector<int> vis(N,0);
         for(int i=0;i<N;i++){
@@ -40,6 +32,19 @@ class Solution {
             topo_sort.push_back(st.top());
             st.pop();
         }
+        
+        return topo_sort;
+     }
+  
+     vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
+        // code here
+        vector<vector<pair<int,int> > >adj(N);
+        
+        for(int i=0;i<edges.size();i++){
+            adj[edges[i][0]].push_back({edges[i][1], edges[i][2]});
+        }
+        
+        vector<int> topo_sort=toposort(adj, N);
         
         vector<int> dist(N, 1000000000+5);
         
