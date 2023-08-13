@@ -89,38 +89,22 @@ public:
         int n=nums.size();
         for(int i=0;i<n;i++){
             int x= primeFactors(nums[i]);
-            // cout<<x<<" ";
             pf.push_back(primeFactors(nums[i]));
         }
-        // cout<<endl;
         
         vector<int> pg=prevGreater(pf,n);
-        // for(auto ele: pg){
-        //     cout<<ele<< " ";
-        // }
-        // cout<<endl;
         vector<int> ng=ngreele(pf,n);
-        // for(auto ele: ng){
-        //     // cout<<ele<< " ";
-        // }
-        // cout<<endl;
         
         priority_queue<pair<long long,long long> >pq;
-        // cout<<"total"<<endl;
         for(int i=0;i<n;i++){
             pq.push({nums[i]*1ll, total(1ll*ng[i]-pg[i]-1)-total(1ll*i-1-pg[i])-total(1ll*ng[i]-i-1)});
-            // cout<<total(1ll*ng[i]-pg[i]-1)-total(1ll*i-1-pg[i])-total(1ll*ng[i]-i-1)<<endl;
         }
         
         long long ans=1;
-        // cout<<ans<<endl;
-        
         while(k>0){
-            // cout<<pq.top().first<<" "<<pq.top().second<<endl;
             ans=mod_mul(ans, binexp(pq.top().first, min(1ll*k, 1ll*pq.top().second)), mod);
             k-=(pq.top()).second;
             pq.pop();
-            // cout<<"k "<<k<<endl;
         }
         
         return ans;
