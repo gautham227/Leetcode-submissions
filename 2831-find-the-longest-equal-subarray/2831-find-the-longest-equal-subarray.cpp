@@ -10,10 +10,7 @@ public:
         for(auto &ele: mp){
             int ind=1;
             int ind1=0;
-            // int cur=1;
             vector<int> x = ele.second;
-            // for(auto ele: x)cout<<ele<<" ";
-            // cout<<endl;
             while(ind<x.size()){
                 while(x[ind]-x[ind1]-(ind-ind1)>k){
                     ind1++;
