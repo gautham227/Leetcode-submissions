@@ -1,7 +1,7 @@
 class Solution {
 public:
     string reorganizeString(string s) {
-        map<char, int> mp;
+        unordered_map<char, int> mp;
         int n=s.size();
         string ans = "";
         for(int i=0;i<n;i++){
