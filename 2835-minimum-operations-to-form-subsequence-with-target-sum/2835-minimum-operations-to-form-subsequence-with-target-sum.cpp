@@ -19,14 +19,6 @@ public:
             target1/=2;
             ind++;
         }
-        for(int i=0;i<flags.size();i++){
-            if(flags[i]){
-                if(ms.find(1ll*(1<<i))!=ms.end()){
-                    flags[i]=false;
-                    ms.erase(ms.find(1ll*(1<<i)));
-                }
-            }
-        }
         int ans=0;
         sum=0;
         for(int i=0;i<flags.size();i++){
