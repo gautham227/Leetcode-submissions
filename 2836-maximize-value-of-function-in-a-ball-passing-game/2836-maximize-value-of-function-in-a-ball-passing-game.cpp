@@ -10,7 +10,7 @@ public:
         this->n=no;
         par.resize(n);
         psum.resize(n);
-        mlog=38;
+        mlog=35;
         for(long long i=0;i<n;i++){
             par[i].resize(mlog);
             psum[i].resize(mlog);
