@@ -26,7 +26,5 @@ public:
         }
         if(last<n)return -1;
         return ans;
-        
-        return ans;
     }
 };
