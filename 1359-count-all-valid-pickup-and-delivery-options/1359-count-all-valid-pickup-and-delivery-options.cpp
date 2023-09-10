@@ -9,7 +9,7 @@ public:
     
     ll mod=1000000000+7;
     
-    ll recur(ll ind, ll used, ll n, vector<vector<ll> >& dp){
+    int recur(ll ind, ll used, ll n, vector<vector<int> >& dp){
         if(ind>=2*n)return 1;
         if(dp[ind][used]!=-1)return dp[ind][used];
         ll ans=0;
@@ -22,7 +22,7 @@ public:
     }
     
     int countOrders(int n) {
-        vector<vector<ll> >dp(2*n+1, vector<ll>(2*n+1,-1));
+        vector<vector<int> >dp(2*n+1, vector<int>(2*n+1,-1));
         return recur(0,0,n,dp);
     }
 };
