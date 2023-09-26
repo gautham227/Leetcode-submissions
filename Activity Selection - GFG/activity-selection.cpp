@@ -10,26 +10,22 @@ class Solution
     //Function to find the maximum number of activities that can
     //be performed by a single person.
     
-    static bool cmp(vector<int> &a, vector<int>& b){
-        return a[1]<b[1];
-    }
-    
     int activitySelection(vector<int> start, vector<int> end, int n)
     {
         // Your code here
-        vector<vector<int> >act;
+        vector<pair<int,int> >act;
         for(int i=0;i<start.size();i++){
             act.push_back({start[i], end[i]});
         }
         
-        sort(act.begin(), act.end(), cmp);
-        
+        sort(act.begin(), act.end());
+        // reverse(act.begin(), act.end());
         int ans=0;
-        int last=-1;
+        int last=INT_MAX;
         
-        for(int i=0;i<act.size();i++){
-            if(act[i][0]> last){
-                last=act[i][1];
+        for(int i=n-1;i>=0;i--){
+            if(act[i].second< last){
+                last=act[i].first;
                 ans++;
             }
         }
