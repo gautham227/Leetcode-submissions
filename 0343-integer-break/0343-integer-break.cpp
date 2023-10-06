@@ -10,8 +10,8 @@ public:
         return dp[ind]=cur;
     }
     int integerBreak(int n) {
-       vector<long long> dp(60,-1);
         if(n<=3)return n-1;
+        vector<long long> dp(60,-1);
         recur(n,dp);
         return dp[n];
     }
