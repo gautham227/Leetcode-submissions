@@ -2,12 +2,12 @@ class Solution {
 public:
     string shortestBeautifulSubstring(string s, int k) {
         string ans="";
-        
+        string s1="";
         int len=10000;
         for(int i=0;i<s.size();i++){
             for(int j=i;j<s.size();j++){
-                string s1="";
                 int cnt1=0;
+                s1.clear();
                 for(int k=i;k<=j;k++){
                     s1.push_back(s[k]);
                     if(s[k]=='1')cnt1++;
