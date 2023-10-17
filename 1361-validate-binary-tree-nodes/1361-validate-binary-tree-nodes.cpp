@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool validateBinaryTreeNodes(int n, vector<int>& left, vector<int>& right) {
-        multiset<int> s;
-        set<int> s1;
+        unordered_multiset<int> s;
+        unordered_set<int> s1;
         for(auto ele: left){
             if(ele!=-1){s.insert(ele);s1.insert(ele);}
         }
@@ -17,7 +17,7 @@ public:
                 break;
             }
         }
-        set<int> s2;
+        unordered_set<int> s2;
         s2.insert(ind);
         queue<int> q;
         q.push(ind);
