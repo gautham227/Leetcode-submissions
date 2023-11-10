@@ -1,6 +1,6 @@
 class Solution {
 public:
-    map<int, multiset<int> >adj;
+    unordered_map<int, multiset<int> >adj;
     void dfs(int ind, vector<int>& ans){
         if(adj.find(ind)==adj.end())return;
         for(auto ele: adj[ind]){
