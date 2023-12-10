@@ -5,7 +5,7 @@ ll binexp(ll a, ll b, ll mod) {ll res = 1; while (b > 0) {if (b & 1)res = (res *
 class Solution {
 public:
     int numberOfGoodPartitions(vector<int>& nums) {
-        map<int, int>pos;
+        unordered_map<int, int>pos;
         for(int i=0;i<nums.size();i++){
             pos[nums[i]]=i;
         }
