@@ -1,64 +1,29 @@
 class Solution {
 public:
+    // dp[ind][rem when div by k][odd][even][started][tight]
+    int dp[10][21][10][10][2][2];
     
-    int dp[10][21][10][10][2];
-    int m;
-    
-    int fun(int pos, int sum, int odd, int even, int f, int n, string &s)
-    {
-
-        if (pos == n) {
-            // cout<<sum<<" "<<odd<<" "<<even<<endl;
-            if (sum == 0 && odd==even) {
-                return 1;
-            }
+    int recur(int ind, int rem, int odd, int even, int st, int tight, string &s, int k){
+        if(ind==s.size()){
+            if(rem==0 && odd==even)return 1;
             return 0;
         }
-        if (dp[pos][sum][odd][even][f] != -1)
-            return dp[pos][sum][odd][even][f];
-        int lmt = 9;
-        if (!f)
-            lmt = s[pos]-'0';
-
-        int ans = 0;
-        for (int i = 0; i <= lmt; i++) {
-            int new_f = f;
-            if (f == 0 and i < lmt)
-                new_f = 1;
-            int sum1 = sum;
-            sum1 *= 10;
-            sum1 += i;
-            sum1 %= m;
-            int odd1=odd;
-            int even1=even;
-            if(i%2==1){
-                odd1++;
-            }
-            else{
-                if(i!=0){
-                    even1++;
-                }
-                else{
-                    if(odd+even>0){
-                        even1++;
-                    }
-                }
-            }
-            ans += fun(pos + 1, sum1,odd1,even1, new_f, n, s);
+        if(dp[ind][rem][odd][even][st][tight]!=-1)return dp[ind][rem][odd][even][st][tight];
+        int upper=s[ind]-'0';
+        if(tight==0)upper=9;
+        int ans=0;
+        for(int i=0;i<=upper;i++){
+            ans+=recur(ind+1, (rem*10+i)%k, odd+(i%2==1), even+(i%2==0)-(i==0 && st==0), (st|(i!=0)), (tight&(i==upper)), s,k);
         }
-        return dp[pos][sum][odd][even][f] = ans;
+        return dp[ind][rem][odd][even][st][tight]=ans;
     }
     
     int numberOfBeautifulIntegers(int low, int high, int k) {
+        string r=to_string(high);
+        string l=to_string(low-1);
         memset(dp, -1, sizeof(dp));
-        m=k;
-        string s1=to_string(high);
-        // cout<<s1<<endl;
-        int ans=fun(0,0,0,0,0,s1.size(),s1);
-        s1=to_string(low-1);
-        // cout<<s1<<endl;
+        int ans=recur(0,0,0,0,0,1,r,k);
         memset(dp, -1, sizeof(dp));
-        ans-=fun(0,0,0,0,0,s1.size(),s1);
-        return ans;
+        return ans-recur(0,0,0,0,0,1,l,k);
     }
 };
