@@ -1,18 +1,18 @@
 class Solution {
 public:
     
-    unordered_map<long long, int> dp;
+    map<pair<int, pair<int, pair<int,int> > >, int> dp;
     
-    long long hash(int ind, int left, int count, int last){
-        long long cur=1ll*ind;
-        cur*=1000;
-        cur+=left;
-        cur*=1000;
-        cur+=count;
-        cur*=1000;
-        cur+=last;
-        return cur;
-    }
+    // long long hash(int ind, int left, int count, int last){
+    //     long long cur=1ll*ind;
+    //     cur*=1000;
+    //     cur+=left;
+    //     cur*=1000;
+    //     cur+=count;
+    //     cur*=1000;
+    //     cur+=last;
+    //     return cur;
+    // }
     
     int ansfn(int cnt1){
         if(cnt1<=1)return cnt1;
@@ -26,7 +26,7 @@ public:
     
     int recur(int ind, int left, int count, int last, string &s){
         if(ind>=s.size()){return ansfn(count);}
-        long long hval=hash(ind,left,count,last);
+        pair<int, pair<int, pair<int,int> > > hval={ind,{left,{count,last}}};
         if(dp.find(hval)!=dp.end())return dp[hval];
         int ans=INT_MAX;
         if(left>0)ans=min(ans,recur(ind+1,left-1,count,last,s));
