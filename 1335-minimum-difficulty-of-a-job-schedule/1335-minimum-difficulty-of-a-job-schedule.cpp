@@ -4,22 +4,24 @@ public:
         // dp[ind][no of days left]
         if(d>jd.size())return -1;
         int n=jd.size();
-        vector<vector<int> >dp(n+2, vector<int>(d+2,1000000000+7));
+        vector<int> prev(n+1, 1000000000+7), cur(n+1,1000000000+7);
         int ma=0;
         for(int i=n-1;i>=0;i--){
             ma=max(ma, jd[i]);
-            dp[i][1]=ma;
+            prev[i]=ma;
         }
-        for(int i=n-1;i>=0;i--){
-            for(int j=2;j<=d;j++){
+        for(int j=2;j<=d;j++){
+            for(int i=n-1;i>=0;i--){
                 ma=0;
                 for(int k=i;k<n;k++){
                     ma=max(ma, jd[k]);
-                    dp[i][j]=min(dp[i][j], ma+dp[k+1][j-1]);
+                    cur[i]=min(cur[i], ma+prev[k+1]);
                 }
             }
+            swap(prev,cur);
+            fill(cur.begin(), cur.end(), 1000000000+7);
         }
         
-        return dp[0][d];
+        return prev[0];
     }
 };
