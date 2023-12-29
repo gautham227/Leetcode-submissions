@@ -18,7 +18,7 @@ public:
                     cur[i]=min(cur[i], ma+prev[k+1]);
                 }
             }
-            swap(prev,cur);
+            prev=cur;
             fill(cur.begin(), cur.end(), 1000000000+7);
         }
         
