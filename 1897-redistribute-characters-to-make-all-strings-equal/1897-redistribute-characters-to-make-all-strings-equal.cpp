@@ -1,7 +1,8 @@
 class Solution {
 public:
     bool makeEqual(vector<string>& words) {
-        vector<int> v(26,0);
+        int v[26];
+        memset(v,0,sizeof(v));
         for(int i=0;i<words.size();i++){
             for(int j=0;j<words[i].size();j++){
                 v[words[i][j]-'a']++;
