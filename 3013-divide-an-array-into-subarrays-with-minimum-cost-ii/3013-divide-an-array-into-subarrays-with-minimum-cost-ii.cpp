@@ -61,11 +61,6 @@ public:
             if(os.size()>=k){
                 ans1=min(ans1,sum);
             }
-            // for(auto ele: os){
-            //     cout<<ele<<" ";
-            // }
-            // cout<<endl;
-            // cout<<sum<<endl;
         }
         return ans + ans1;
     }
