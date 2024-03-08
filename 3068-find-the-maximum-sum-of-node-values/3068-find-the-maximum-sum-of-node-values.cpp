@@ -41,17 +41,11 @@ public:
         }
         ll odd=odd1;
         ll even=even1;
-        // cout<<"odd "<<odd<<endl;
-        // cout<<"even "<<even<<endl;
         for(auto ele: adj[ind]){
             if(ele==par)continue;
             pos.push_back(recur(ele,ind,1,adj,dp,k,nums));
             neg.push_back(recur(ele,ind,0,adj,dp,k,nums));                         
         }
-        // for(int i=0;i<pos.size();i++){
-        //     cout<<pos[i]<<" "<<neg[i]<<endl;
-        // }
-        // cout<<endl;
         if(pos.size()==0){
             if(type==0)return dp[ind][type]=nums[ind];
             return dp[ind][type]=nums[ind]^k;
@@ -59,22 +53,11 @@ public:
         ll ans1=accumulate(pos.begin(), pos.end(), 0*1ll);
         if(pos.size()%2==0)even=max(even, even+ans1);
         else odd=max(odd,odd+ans1);
-        // cout<<"oediff "<<odd<<" "<<even<<endl;
         vector<ll> pe;
         for(ll i=0;i<pos.size();i++){
             pe.push_back(neg[i]-pos[i]);
         }
         sort(pe.begin(), pe.end());
-        for(ll i=0;i<pe.size();i++){
-            ans1+=pe[i];
-            if((pos.size()-i-1)%2==1){
-                odd=max(odd,odd1+ans1);
-            }
-            else{
-                even=max(even,even1+ans1);
-            }
-        }
-        ans1=accumulate(pos.begin(), pos.end(), 0*1ll);
         reverse(pe.begin(), pe.end());
         for(ll i=0;i<pe.size();i++){
             ans1+=pe[i];
@@ -99,12 +82,6 @@ public:
         vector<ll> nums1;
         for(ll ele: nums)nums1.push_back(ele);
         ll ans = recur(0,-1,0,adj,dp,k,nums1);
-        // for(int i=0;i<2;i++){
-        //     for(int j=0;j<n;j++){
-        //         cout<<i<<" "<<j<<" "<<dp[j][i]<<endl;
-        //     }
-        //     cout<<endl;
-        // }
         return ans;
     }
 };
