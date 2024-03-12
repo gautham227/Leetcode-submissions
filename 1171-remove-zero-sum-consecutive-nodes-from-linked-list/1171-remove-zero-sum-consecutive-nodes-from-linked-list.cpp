@@ -15,7 +15,6 @@ public:
         ListNode* nh= new ListNode(0,head);
         ListNode* nh1=nh;
         int sum=0;
-        int ind=0;
         while(nh!=NULL){
             sum+=nh->val;
             if(cur.find(sum)!=cur.end()){
