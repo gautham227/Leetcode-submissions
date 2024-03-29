@@ -20,7 +20,6 @@ public:
                 }
                 ans+=(st);
             }
-            // cout<<st<<" "<<en<<" "<<cnt<<" "<<ans<<endl;
         }
         return ans;
     }
