@@ -1,7 +1,7 @@
 class Solution {
 public:
     int subarraysWithKDistinct(vector<int>& nums, int k) {
-        map<int, int> cntr, last;
+        unordered_map<int, int> cntr, last;
         set<int> s;
         int ans=0;
         int st=0, en=0;
