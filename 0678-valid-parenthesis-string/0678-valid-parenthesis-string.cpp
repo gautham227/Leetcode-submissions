@@ -19,7 +19,7 @@ public:
     
     bool checkValidString(string s) {
         int n=s.size();
-        vector<vector<int> > dp(n+2,vector<int>(n+2, -1));
+        vector<vector<int> > dp(n,vector<int>(n, -1));
         return recur(0,0,s,dp);
     }
 };
