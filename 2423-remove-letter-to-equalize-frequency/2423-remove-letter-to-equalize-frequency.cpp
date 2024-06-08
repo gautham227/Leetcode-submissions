@@ -16,7 +16,6 @@ public:
             else if(v[i]==ma-1)s++;
             else return false;
         }
-        // cout<<f<<" "<<s<<" "<<z<<" "<<o<<endl;
         if(o==1 && s==0)return true;
         return (f==1 && (o==0 || 1==ma-1));
     }
