@@ -24,7 +24,6 @@ public:
                 ms.erase(ms.begin());
             }
         }
-        
         return ans;
     }
 };
