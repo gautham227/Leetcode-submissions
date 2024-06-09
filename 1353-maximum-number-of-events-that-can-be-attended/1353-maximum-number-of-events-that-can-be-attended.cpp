@@ -1,12 +1,8 @@
 class Solution {
 public:
     
-    static bool cmp(vector<int>& a, vector<int>& b){
-        return a[0]<b[0];
-    }
-    
     int maxEvents(vector<vector<int>>& events) {
-        sort(events.begin(), events.end(), cmp);
+        sort(events.begin(), events.end());
         multiset<int> ms;
         int ans=0;
         int ind=0;
