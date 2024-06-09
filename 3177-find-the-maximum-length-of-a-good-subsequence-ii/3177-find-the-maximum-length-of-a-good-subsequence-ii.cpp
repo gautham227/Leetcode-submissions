@@ -77,7 +77,7 @@ public:
     int maximumLength(vector<int>& nums, int k) {
         int n=nums.size();
         vector<vector<int> > dp(n+1, vector<int>(k+1, 1));
-        map<int, int> mp;
+        unordered_map<int, int> mp;
         mp[nums[n-1]]=n-1;
         vector<int> mval(k+5, 1);
         for(int i=n-2;i>=0;i--){
@@ -91,7 +91,6 @@ public:
                     }
                 }
                 else{
-                    // cout<<i<<" "<<j<<" "<<mp[nums[i]];
                     if(mp.find(nums[i])!=mp.end()){
                         dp[i][j]=max(dp[i][j], 1+ dp[mp[nums[i]]][j]);
                     }
