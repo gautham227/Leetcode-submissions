@@ -5,7 +5,7 @@ public:
 
 class Solution {
 public:
-    static map<int, maxele> mp;
+    static unordered_map<int, maxele> mp;
 
     static bool cmp(int a, int b) {
         if(mp[a].ele!=mp[b].ele) return (mp[a].ele < mp[b].ele);
@@ -24,4 +24,4 @@ public:
 };
 
 // Define the static member
-map<int, maxele> Solution::mp;
+unordered_map<int, maxele> Solution::mp;
