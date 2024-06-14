@@ -10,9 +10,8 @@ public:
                 curmaxi=nums[i];
             }
             else{
-                int newele=curmaxi+1;
-                ans+=newele-nums[i];
-                curmaxi=max(curmaxi, newele);
+                ans+=curmaxi+1-nums[i];
+                curmaxi++;
             }
         }
         
