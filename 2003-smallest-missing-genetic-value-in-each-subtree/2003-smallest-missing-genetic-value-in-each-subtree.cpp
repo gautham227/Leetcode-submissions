@@ -3,6 +3,7 @@ public:
     
     vector<int> ans;
     
+    // assigining an answer of 1 to all the nodes whoch do not have 1 in its subtree     
     bool dfs(int ind, int par, vector<vector<int> >& adj, vector<int>& nums){
         bool ret=(nums[ind]==1);
         for(auto ele: adj[ind]){
@@ -15,7 +16,9 @@ public:
         return ret;
     }
     
+    // after the first dfs only 1 path exsts where answer has not been found so at first we will go to those children and determine its answers, then we will be processing the other nodes.     
     void dfs1(int ind, int par, vector<vector<int> >& adj, vector<int>& nums, set<int>& s){
+        // rem denotes be the child node for which answer has not been found, there will be only 1 child with this property as the numbers are distinct        
         int rem=-1;
         for(auto ele: adj[ind]){
             if(ele!=par && ans[ele]==-1){
