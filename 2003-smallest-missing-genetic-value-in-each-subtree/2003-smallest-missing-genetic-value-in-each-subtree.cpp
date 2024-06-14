@@ -2,7 +2,7 @@ class Solution {
 public:
     
     vector<int> ans;
-    
+    bitset<100000+2> bs;
     // assigining an answer of 1 to all the nodes whoch do not have 1 in its subtree     
     bool dfs(int ind, int par, vector<vector<int> >& adj, vector<int>& nums){
         bool ret=(nums[ind]==1);
@@ -17,7 +17,7 @@ public:
     }
     
     // after the first dfs only 1 path exsts where answer has not been found so at first we will go to those children and determine its answers, then we will be processing the other nodes.     
-    void dfs1(int ind, int par, vector<vector<int> >& adj, vector<int>& nums, set<int>& s){
+    void dfs1(int ind, int par, vector<vector<int> >& adj, vector<int>& nums){
         // rem denotes be the child node for which answer has not been found, there will be only 1 child with this property as the numbers are distinct        
         int rem=-1;
         for(auto ele: adj[ind]){
@@ -25,13 +25,19 @@ public:
                 rem=ele;
             }
         }
-        if(rem!=-1)dfs1(rem,ind,adj,nums,s);
+        if(rem!=-1)dfs1(rem,ind,adj,nums);
+        int mini=1;
         for(auto ele: adj[ind]){
-            if(ele==par || ele==rem)continue;
-            dfs1(ele, ind, adj, nums, s);
+            if(ele==par)continue;
+            mini=max(mini, ans[ele]);
+            if(ele==rem)continue;
+            dfs1(ele,ind,adj,nums);
         }
-        s.erase(s.find(nums[ind]));
-        if(ans[ind]==-1)ans[ind]=*(s.begin());
+        bs.set(nums[ind]);
+        while(bs[mini]){
+            mini++;
+        }
+        if(ans[ind]==-1)ans[ind]=mini;
         return;
     }
     
@@ -53,11 +59,7 @@ public:
         // initialising the answer array
         ans.resize(n, -1);
         dfs(root,-1,adj,nums);
-        set<int> s;
-        for(int i=1;i<=100000+2;i++){
-            s.insert(i);
-        }
-        dfs1(root,-1,adj,nums,s);
+        dfs1(root,-1,adj,nums);
         return ans;
     }
 };
