@@ -14,8 +14,8 @@ public:
     }
     
     int maxDistance(vector<int>& position, int m) {
-        int l=1, r=1000000000+2;
         sort(position.begin(), position.end());
+        int l=1, r=1000000000+2;
         while(r-l>1){
             int mid=l+(r-l)/2;
             if(check(mid, m, position)){
