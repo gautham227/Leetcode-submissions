@@ -105,12 +105,6 @@ public:
            if(dp[n-1][j]==-1)reqd=j;
       }
       int ans=recur(n-1,reqd);
-      // for(int i=0;i<=4;i++){
-      //     for(int j=0;j<=4;j++){
-      //         cout<<dp[i][j]<<" ";
-      //     }
-      //     cout<<endl;
-      // }
         return ans;
     }
 };
