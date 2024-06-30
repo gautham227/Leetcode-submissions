@@ -60,9 +60,6 @@ public:
             }
         }
         
-        sort(edges1.begin(), edges1.end());
-        sort(edges2.begin(), edges2.end());
-        sort(edges3.begin(), edges3.end());
         DSU d(n+1), d1(n+1);
         
         int ans=0;
