@@ -106,23 +106,18 @@ public:
         int n1,n2;
         n1=edges1.size()+1;
         n2=edges2.size()+1;
-        // cout<<"tree1"<<endl;
         vector<vector<int>> adj1(n1), adj2(n2);
         for(auto ele: edges1){
             adj1[ele[0]].pb(ele[1]);
             adj1[ele[1]].pb(ele[0]);
-            // cout<<ele[0]<<" "<<ele[1]<<endl;
         }
-        // cout<<"tree1"<<endl;
         for(auto ele: edges2){
             adj2[ele[0]].pb(ele[1]);
             adj2[ele[1]].pb(ele[0]);
-            // cout<<ele[0]<<" "<<ele[1]<<endl;
         }
         
         int d1=dia(n1, adj1);
         int d2=dia(n2, adj2);
-        // cout<<d1<<" "<<d2<<endl;
         return max({d1-1,d2-1, (d1)/2+(d2)/2+1});
     }
 };
