@@ -1,6 +1,8 @@
 class Solution {
 public:
     
+    // This is just a utility function to return the iterator of the last element of the set 
+    
     auto retit(multiset<vector<int> >& ms){
         return (--ms.end());
     }
@@ -14,8 +16,11 @@ public:
         for(int i=0;i<time.size();i++){
             lr.insert({time[i][0]+time[i][2], i});
         }
+        
+        // st denotes the no of workers that have gone to right to take the boxes, comp denotes the no of times workers have returned back to left side         
         int st=0, comp=0;
         while(st<n || comp<n){
+            // flag denotes that some activity has happened at this time or now, if there are no activity to be done at this point, we just increase timer             
             bool flag=false;
             while(1){
                 while(rw.size()>0 && (*rw.begin())[0]<=timer){
@@ -37,15 +42,7 @@ public:
                 flag=true;
                 lr.insert({(*lw.begin())[1], (*lw.begin())[2]});
                 lw.erase(lw.begin());
-                // comp++;
             }
-            
-            // if(st==n && rr.size()==0){
-            //     int val1=0, val2=0;
-            //     if(rw.size()>0) val1=(*rw.begin())[0];
-            //     if(lw.size()>0) val2=(*lw.begin())[0];
-            //     timer=max(timer, min(val1, val2));
-            // }
             
             if(lr.size()>0 && st<n){
                 flag=true;
@@ -54,23 +51,6 @@ public:
                 lr.erase(retit(lr));
                 st++;
             }
-//             cout<<"lw "<<" ";
-//             for(auto ele: lw){cout<<"{"; for(auto x: ele){cout<<x<<" ";}cout<<"}";}
-//             cout<<endl;
-            
-//             cout<<"lr ";
-//             for(auto ele: lr){cout<<"{"; for(auto x: ele){cout<<x<<" ";}cout<<"}";}
-//             cout<<endl;
-            
-//             cout<<"rw ";
-//             for(auto ele: rw){cout<<"{"; for(auto x: ele){cout<<x<<" ";}cout<<"}";}
-//             cout<<endl;
-            
-//             cout<<"rr ";
-//             for(auto ele: rr){cout<<"{"; for(auto x: ele){cout<<x<<" ";}cout<<"}";}
-//             cout<<endl;
-            
-//             cout<<"timer "<<timer<<endl;
             if(flag==false)timer++;
         }
         
