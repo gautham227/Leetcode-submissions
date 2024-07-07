@@ -115,29 +115,6 @@ node* root;
         n->setend();
         n->cost=min(n->cost, c);
     }
-
-    bool search(string &s){
-        node* n=root;
-        for(int i=0;i<s.size();i++){
-            if(! n->containskey(s[i])){
-                return false;
-            }
-            n=n->next(s[i]);
-        }
-        return n->flag;
-    }
-
-    bool startswith(string &s){
-        node* n=root;
-        for(int i=0;i<s.size();i++){
-            if(! n->containskey(s[i])){
-                return false;
-            }
-            n=n->next(s[i]);
-        }
-        return true;
-    }
-    
 };
 
 class Solution {
